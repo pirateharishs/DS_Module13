@@ -1,17 +1,18 @@
-1. You are implementing a RecentCounter class that counts the number of recent calls within a sliding window of 3000 milliseconds. Each time you receive a new ping(t) at time t, you need to return the number of calls that occurred in the inclusive range [t - 3000, t]. Calls are guaranteed to be strictly increasing in time
-2.  Design a program that: Takes a string input representing a message. Removes all non-alphanumeric characters (e.g., commas, spaces, symbols). Converts all characters to lowercase. Uses a deque to check whether the cleaned string is a palindrome.
+### 1. You are implementing a RecentCounter class that counts the number of recent calls within a sliding window of 3000 milliseconds. Each time you receive a new ping(t) at time t, you need to return the number of calls that occurred in the inclusive range [t - 3000, t]. Calls are guaranteed to be strictly increasing in time
 
-3.      In a smart home, each appliance sends power consumption readings to the central controller every minute. The system must detect power surges — defined as a time window of 5 minutes (i.e., 5 readings) where all readings are above a threshold value (say 1000W). If such a surge is detected, an alert must be triggered. Your task is to implement a monitoring system using a deque that: Continuously stores the last 5 readings. Checks after each new reading if all 5 readings in the deque are > threshold.  If so, prints "⚠️ Power Surge Detected". Otherwise, prints "✅ Normal".
+### 2.  Design a program that: Takes a string input representing a message. Removes all non-alphanumeric characters (e.g., commas, spaces, symbols). Converts all characters to lowercase. Uses a deque to check whether the cleaned string is a palindrome.
 
-4.      You are given a Java program that defines a queue data structure using a singly linked list. The implementation involves two classes:
-Node class: Represents a single element in the queue with two fields:
-data: stores the integer value
-next: points to the next node
-Queue class: Provides methods to perform the following operations:
-enqueue(int new_data): To perform insertion of a new element at the rear of the queue.
-dequeue(): To perform deletion of the front element from the queue.
-isEmpty(): To check if the queue is empty.
-printQueue(): To display the current elements of the queue after every enqueue or dequeue operation.
+### 3.      In a smart home, each appliance sends power consumption readings to the central controller every minute. The system must detect power surges — defined as a time window of 5 minutes (i.e., 5 readings) where all readings are above a threshold value (say 1000W). If such a surge is detected, an alert must be triggered. Your task is to implement a monitoring system using a deque that: Continuously stores the last 5 readings. Checks after each new reading if all 5 readings in the deque are > threshold.  If so, prints "⚠️ Power Surge Detected". Otherwise, prints "✅ Normal".
+
+### 4.      You are given a Java program that defines a queue data structure using a singly linked list. The implementation involves two classes:
+### Node class: Represents a single element in the queue with two fields:
+### data: stores the integer value
+### next: points to the next node
+### Queue class: Provides methods to perform the following operations:
+### enqueue(int new_data): To perform insertion of a new element at the rear of the queue.
+### dequeue(): To perform deletion of the front element from the queue.
+### isEmpty(): To check if the queue is empty.
+### printQueue(): To display the current elements of the queue after every enqueue or dequeue operation.
 
 
 ## program 1
