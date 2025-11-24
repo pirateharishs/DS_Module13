@@ -1,223 +1,334 @@
-### 1. You are implementing a RecentCounter class that counts the number of recent calls within a sliding window of 3000 milliseconds. Each time you receive a new ping(t) at time t, you need to return the number of calls that occurred in the inclusive range [t - 3000, t]. Calls are guaranteed to be strictly increasing in time
+# EX 1 You’re creating a health monitoring device which stores several sensor readings in an array. To determine the minimum value (e.g., lowest heartbeat), implement a recursive method.
+## DATE: 13.08.2025
+## AIM:
+To write a JAVA program To determine the minimum value (e.g., lowest heartbeat), implement a recursive method.
 
-### 2.  Design a program that: Takes a string input representing a message. Removes all non-alphanumeric characters (e.g., commas, spaces, symbols). Converts all characters to lowercase. Uses a deque to check whether the cleaned string is a palindrome.
+## Algorithm
+1. Start
+2.Read the number of elements (e.g., number of heartbeat readings).
+3.Store all readings in an array.
+4.Call a recursive function findMin(arr, index)
+If index == arr.length - 1, return arr[index]
+Else return min(arr[index], findMin(arr, index + 1))
+5.Print the minimum value returned by the recursive function.
+6.End 
 
-### 3.      In a smart home, each appliance sends power consumption readings to the central controller every minute. The system must detect power surges — defined as a time window of 5 minutes (i.e., 5 readings) where all readings are above a threshold value (say 1000W). If such a surge is detected, an alert must be triggered. Your task is to implement a monitoring system using a deque that: Continuously stores the last 5 readings. Checks after each new reading if all 5 readings in the deque are > threshold.  If so, prints "⚠️ Power Surge Detected". Otherwise, prints "✅ Normal".
-
-### 4.      You are given a Java program that defines a queue data structure using a singly linked list. The implementation involves two classes:
-### Node class: Represents a single element in the queue with two fields:
-### data: stores the integer value
-### next: points to the next node
-### Queue class: Provides methods to perform the following operations:
-### enqueue(int new_data): To perform insertion of a new element at the rear of the queue.
-### dequeue(): To perform deletion of the front element from the queue.
-### isEmpty(): To check if the queue is empty.
-### printQueue(): To display the current elements of the queue after every enqueue or dequeue operation.
-
-
-## program 1
-
+## Program:
 ```
-    import java.util.*;
-
-class RecentCounter {
-    Queue<Integer> q;
-
-    public RecentCounter() {
-        q = new LinkedList<>();
-    }
-
-    public int ping(int t) {
-        q.add(t);
-        // Remove pings older than t - 3000
-        while (q.peek() < t - 3000) {
-            q.poll();
-        }
-        return q.size();
-    }
-
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        RecentCounter rc = new RecentCounter();
-        int n = sc.nextInt(); // number of pings
-        for (int i = 0; i < n; i++) {
-            int t = sc.nextInt();
-            System.out.println(rc.ping(t));
-        }
-    }
-}
-```
-
-## program 2:
-```
-  import java.util.*;
-
-public class PalindromeChecker {
-    public static boolean isPalindrome(String s) {
-        Deque<Character> deque = new ArrayDeque<>();
-
-        // Remove non-alphanumeric and convert to lowercase
-        for (char c : s.toCharArray()) {
-            if (Character.isLetterOrDigit(c)) {
-                deque.add(Character.toLowerCase(c));
-            }
-        }
-
-        // Check palindrome using deque
-        while (deque.size() > 1) {
-            if (deque.removeFirst() != deque.removeLast()) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String input = sc.nextLine();
-
-        if (isPalindrome(input))
-            System.out.println("Palindrome");
-        else
-            System.out.println("Not Palindrome");
-    }
-}
-```
-
-## program 3:
-
-```
+/*
+Program To determine the minimum value (e.g., lowest heartbeat), implement a recursive method.
+Developed by: HARISH S
+Register Number: 212223230071
+*/
 import java.util.*;
 
-public class PowerSurgeMonitor {
+public class Main {
+    static int getMin(int[] arr, int i, int n) {
+        if (i == n - 1) {
+            return arr[i];
+        }
+
+    
+        int minRest = getMin(arr, i + 1, n);
+       
+        return Math.min(arr[i], minRest);
+    }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Deque<Integer> readings = new ArrayDeque<>();
-
-        int threshold = 1000;
-        int windowSize = 5;
-        int n = sc.nextInt(); // total readings
-
+        int n = sc.nextInt();
+        int[] arr = new int[n];
         for (int i = 0; i < n; i++) {
-            int reading = sc.nextInt();
-            readings.addLast(reading);
-
-            // Maintain only the last 5 readings
-            if (readings.size() > windowSize) {
-                readings.removeFirst();
-            }
-
-            // Check for surge
-            if (readings.size() == windowSize && allAboveThreshold(readings, threshold)) {
-                System.out.println("⚠️ Power Surge Detected");
-            } else {
-                System.out.println("✅ Normal");
-            }
+            arr[i] = sc.nextInt();
         }
-    }
-
-    // Helper method to check if all readings exceed threshold
-    private static boolean allAboveThreshold(Deque<Integer> readings, int threshold) {
-        for (int r : readings) {
-            if (r <= threshold) {
-                return false;
-            }
-        }
-        return true;
+        System.out.println(getMin(arr, 0, n));
     }
 }
 ```
 
-## program 4:
+## Output:
 
+<img width="649" height="254" alt="image" src="https://github.com/user-attachments/assets/e2c774aa-cc92-40f6-acb8-778042dd4078" />
+
+
+## Result:
+Thus the JAVA program to find the minimum value (e.g., lowest heartbeat), implement a recursive method has implemented successfully
+
+
+# Ex2 Count how many times a number appears in an array recursively.
+## DATE: 20.08.2025
+## AIM:
+To write a Java program to Count how many times a number appears in an array recursively.
+
+## Algorithm
+1.Start
+2.Read the size of the array and input all elements into the array.
+3.Read the target number whose frequency you want to count.
+4.Call the recursive function countOccurrences(arr, index, target) If index == arr.length, return 0 If arr[index] == target, return 1 + countOccurrences(arr, index + 1, target) Else return countOccurrences(arr, index + 1, target)
+5.Display the returned count as the total number of occurrences. 
+
+## Program:
 ```
-import java.util.*;
+/*
+Program Count how many times a number appears in an array recursively.
+Developed by: AIAHWARYA V
+RegisterNumber:212223220003 
+*/
+import java.util.Scanner;
 
-class Node {
-    int data;
-    Node next;
+public class CountOccurrences {
 
-    Node(int d) {
-        data = d;
-        next = null;
-    }
-}
+    // Recursive function to count occurrences of a target number
+    public static int countOccurrences(int[] arr, int n, int target) {
+        //write your code here
+        if (n == 0) {
+            return 0;
+        }
 
-class Queue {
-    Node front, rear;
-
-    Queue() {
-        front = rear = null;
-    }
-
-    // Check if queue is empty
-    boolean isEmpty() {
-        return front == null;
-    }
-
-    // Enqueue operation — insert at rear
-    void enqueue(int new_data) {
-        Node newNode = new Node(new_data);
-
-        if (rear == null) {
-            front = rear = newNode;
+        // Check the last element and add 1 if it matches the target
+        if (arr[n - 1] == target) {
+            return 1 + countOccurrences(arr, n - 1, target);
         } else {
-            rear.next = newNode;
-            rear = newNode;
+            return countOccurrences(arr, n - 1, target);
         }
-        System.out.print("After Enqueue " + new_data + ": ");
-        printQueue();
     }
 
-    // Dequeue operation — remove from front
-    void dequeue() {
-        if (isEmpty()) {
-            System.out.println("Queue is empty. Cannot dequeue.");
-            return;
-        }
-
-        int removed = front.data;
-        front = front.next;
-
-        if (front == null)
-            rear = null;
-
-        System.out.print("After Dequeue " + removed + ": ");
-        printQueue();
-    }
-
-    // Print all elements in the queue
-    void printQueue() {
-        if (isEmpty()) {
-            System.out.println("Queue is empty");
-            return;
-        }
-
-        Node temp = front;
-        while (temp != null) {
-            System.out.print(temp.data + " ");
-            temp = temp.next;
-        }
-        System.out.println();
-    }
-}
-
-public class LinkedListQueueDemo {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        Queue q = new Queue();
+        Scanner scanner = new Scanner(System.in);
 
-        int n = sc.nextInt(); // number of operations
-        for (int i = 0; i < n; i++) {
-            String op = sc.next();
-            if (op.equals("enqueue")) {
-                int val = sc.nextInt();
-                q.enqueue(val);
-            } else if (op.equals("dequeue")) {
-                q.dequeue();
-            }
+        // Input: Size of array
+        int size = scanner.nextInt();
+
+        if (size <= 0) {
+            System.out.println("Invalid array size. Must be positive.");
+            return;
         }
+
+        // Input: Array elements
+        int[] arr = new int[size];
+        for (int i = 0; i < size; i++) {
+            arr[i] = scanner.nextInt();
+        }
+
+        // Input: Target number to count
+        int target = scanner.nextInt();
+
+        // Compute and display result
+        int count = countOccurrences(arr, size, target);
+        System.out.println("The number " + target + " appears " + count + " time(s) in the array.");
+
+        scanner.close();
     }
 }
 ```
+
+## Output:
+
+<img width="1027" height="611" alt="image" src="https://github.com/user-attachments/assets/8b339a84-624e-4b20-93c5-7304d201510d" />
+
+
+## Result:
+Thus, the Java program to Count how many times a number appears in an array recursively is implemented successfully.
+
+
+# EX3 Write a program to count the number of digits in an integer.
+## DATE: 27.08.2025
+## AIM:
+To write a C program to implement Tower of Hanoi
+
+## Algorithm
+1. Start the program.
+2. Read an integer from the user.
+3. Define a recursive function countDigits() that counts digits by dividing the number by 10 each time.
+4. Base condition: if the number is 0, return 0.
+5. Recursive step: return 1 + countDigits(number / 10).
+6. Display the total count of digits.
+7. Stop the program.
+
+## Program:
+```
+/*
+Program to to count the number of digits in an integer
+Developed by: AISHWARYA V
+RegisterNumber: 212223220003 
+*/
+import java.util.Scanner;
+
+public class CountDigitsRecursive {
+    static int countDigits(int n) {
+        if (n == 0)
+            return 0;
+        return 1 + countDigits(n / 10);
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter an integer: ");
+        int n = sc.nextInt();
+        if (n == 0)
+            System.out.println("Number of digits: 1");
+        else
+            System.out.println("Number of digits: " + countDigits(Math.abs(n)));
+        sc.close();
+    }
+}
+```
+
+## Output:
+
+<img width="341" height="158" alt="image" src="https://github.com/user-attachments/assets/7937432d-e34f-46f6-bfde-6840e7fe8c8f" />
+
+
+## Result:
+Thus, the Java program to to count the number of digits in an integer is implemented successfully.
+
+# Ex4 You are given a Java program that performs matrix addition. If Matrix A has all odd numbers and Matrix B has all even numbers of the same dimension, what will be the nature (even/odd/mixed) of the resulting matrix?
+## DATE: 3.09.2025
+## AIM:
+To write a java function to evaluate weather the given Matrix A has all odd numbers and Matrix B has all even numbers of the same dimension and find the nature of resultant matrrix.
+
+## Algorithm
+1. Start the program.
+2. Read the dimensions of both matrices (rows and columns).
+3. Check whether Matrix A and Matrix B have the same dimensions.
+4. If not, display “Matrices are not of same dimension” and stop.
+5. Read Matrix A and check each element:
+6. If every element is odd, continue.
+7. If any element is even, mark A as invalid and stop further checking.
+8. If both matrices are valid, compute the resultant matrix (e.g., A + B or any operation specified).
+9. Determine the nature of the resultant matrix:
+10. If all elements are odd, print “Resultant matrix is an Odd Matrix”.
+11. If all elements are even, print “Resultant matrix is an Even Matrix”.
+12. Display the Resultant Matrix.
+13. Stop the program.   
+
+## Program:
+```
+/*
+Program to ind the nature of resultant matrrix.
+Developed by: AISHWARYA V
+RegisterNumber:212223220003
+*/
+import java.util.Scanner;
+
+public class MatrixAddition {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int rows = sc.nextInt();
+        int cols = sc.nextInt();
+
+        int[][] A = new int[rows][cols];
+        int[][] B = new int[rows][cols];
+        int[][] result = new int[rows][cols];
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                A[i][j] = sc.nextInt();
+            }
+        }
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                B[i][j] = sc.nextInt();
+            }
+        }
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                result[i][j] = A[i][j] + B[i][j];
+            }
+        }
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                System.out.print(result[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+       
+    }
+}
+```
+
+## Output:
+
+<img width="422" height="624" alt="image" src="https://github.com/user-attachments/assets/34782319-f865-4fe8-a281-f3aed6852160" />
+
+## Result:
+Thus, the java program to evaluate weather the given Matrix A has all odd numbers and Matrix B has all even numbers of the same dimension and find the nature of resultant matrrix is implemented successfully.
+
+
+# Ex5 Count Inversions in an Array
+## DATE: 10.09.2025
+## AIM:
+To write a Java program  to Count the number of inversions in an array where inversion is defined as: arr[i] > arr[j] and i < j
+
+## Algorithm
+
+1. Start the program.
+2. Declare an integer array arr of size n.
+3. Read the value of n (number of elements).
+4. Read n elements and store them in the array arr.
+5. Initialize a variable count to 0 to store the number of inversions.
+6. Use two nested loops:
+7. Outer loop variable i from 0 to n - 1
+8. Inner loop variable j from i + 1 to n - 1
+9. For each pair (i, j), if arr[i] > arr[j] and i < j, increment count by 1.
+10. After all comparisons, print the value of count as the total number of inversions in the array.
+11. Stop the program.
+    
+## Program:
+```
+/*
+Program toto Count the number of inversions in an array where inversion is defined as: arr[i] > arr[j] and i < j
+Developed by: AISHWARYA V
+RegisterNumber:212223220003
+*/
+import java.util.Scanner;
+
+public class CountInversions
+{
+    public static int countInversions(int[] arr)
+{
+        int n = arr.length;
+        int count = 0;
+        for (int i = 0; i < n - 1; i++)
+{
+            for (int j = i + 1; j < n; j++)
+{
+                if (arr[i] > arr[j]) {
+                    count++; 
+                }
+            }
+        }
+
+        return count;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter number of elements: ");
+        int n = sc.nextInt();
+
+        int[] arr = new int[n];
+
+        System.out.println("Enter " + n + " elements:");
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        int inversions = countInversions(arr);
+
+        System.out.println("Number of inversions in the array: " + inversions);
+
+        sc.close();
+    }
+}
+```
+
+## Output:
+
+<img width="406" height="243" alt="image" src="https://github.com/user-attachments/assets/6c314097-77b6-4f0e-a6ac-6e5e1cc689f4" />
+
+## Result:
+Thus the Java program to to Count the number of inversions in an array where inversion is defined as: arr[i] > arr[j] and i < jis implemented successfully.
