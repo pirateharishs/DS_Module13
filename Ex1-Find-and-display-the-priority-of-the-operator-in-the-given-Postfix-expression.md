@@ -4,6 +4,7 @@
 To write a JAVA program To determine the minimum value (e.g., lowest heartbeat), implement a recursive method.
 
 ## Algorithm:
+```
 1. Start
 2.Read the number of elements (e.g., number of heartbeat readings).
 3.Store all readings in an array.
@@ -12,7 +13,7 @@ If index == arr.length - 1, return arr[index]
 Else return min(arr[index], findMin(arr, index + 1))
 5.Print the minimum value returned by the recursive function.
 6.End 
-
+```
 ## Program:
 ```
 /*
