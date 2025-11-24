@@ -1,52 +1,41 @@
-# EX3 Write a program to count the number of digits in an integer.
-## DATE:18-08-2025
+# EX3 Implementation of Tower of Hanoi
+
 ## AIM:
 To write a C program to implement Tower of Hanoi
 
 ## Algorithm
-1. Read the input number Take an integer num from the user.
-2. Convert the number to a non-negative value Use Math.abs(num) and store it in n to handle negative numbers.
-3. Check if the number is zero If n == 0, set digit count to 1 (since zero has one digit).
-4. Count digits for non-zero numbers Repeatedly divide n by 10 and increment the counter until n becomes 0.
-5. Display the digit count Output the total number of digits.
- 
-
+1. Start the program. 
+2. Check if n is greater than 0. 
+3. Recursively move n-1 disks from source (x) to auxiliary (z) using destination (y). 
+4. Print the move of the n-th disk from source (x) to destination (y). 
+5. Recursively move n-1 disks from auxiliary (z) to destination (y) using source (x). 
+6. The function is called initially with TOH(n, 'A', 'B', 'C') where 'A', 'B', and 'C' are the rods. 
+7. End 
 ## Program:
 ```
-/*
-Program to to count the number of digits in an integer
-Developed by: HARISH S
-Register Number: 212223230071
-import java.util.Scanner;
 
-public class CountDigits {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int num = sc.nextInt();
-
-        int count = 0;
-        int n = Math.abs(num); 
-
-        if (n == 0) {
-            count = 1; 
-        } else {
-            while (n > 0) {
-                n /= 10; 
-                count++;
-            }
-        }
-
-        System.out.println("Number of digits: " + count);
-    }
+#include<stdio.h> 
+void TOH(int n,char x,char y,char z) 
+{ 
+if(n>0) 
+{ 
+TOH(n-1,x,z,y); 
+printf("%c to %c",x,y); 
+printf("\n"); 
+TOH(n-1,z,y,x); 
+} 
+} 
+int main() 
+{ 
+int n=2; 
+TOH(n,'A','B','C'); 
 }
-*/
-
 ```
 
 ## Output:
+![image](https://github.com/user-attachments/assets/a4fc9e0d-41de-47e6-a022-9df6c2b5dca7)
 
-<img width="733" height="328" alt="image" src="https://github.com/user-attachments/assets/e98aa441-ca80-47c7-9d17-30a8f18ae029" />
 
 
 ## Result:
-Thus, the Java program to to count the number of digits in an integer is implemented successfully.
+Thus, the C program to implement Tower of Hanoi using recursion is implemented successfully.
