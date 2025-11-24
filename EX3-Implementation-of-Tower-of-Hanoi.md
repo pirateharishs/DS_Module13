@@ -1,51 +1,54 @@
-# EX3 Write a program to count the number of digits in an integer.
-## DATE:23-11-2025
+# Ex3
+## Write a program to count the number of digits in an integer.
+## DATE: 14-11-2025
 ## AIM:
-To write a C program to implement Tower of Hanoi
+To write a Java program to count the number of digits in an integer.
 
 ## Algorithm
-1. Read the input number Take an integer num from the user.
-2. Convert the number to a non-negative value Use Math.abs(num) and store it in n to handle negative numbers.
-3. Check if the number is zero If n == 0, set digit count to 1 (since zero has one digit).
-4. Count digits for non-zero numbers Repeatedly divide n by 10 and increment the counter until n becomes 0.
-5. Display the digit count Output the total number of digits.
- 
+1. Start the program.
+2. Declare an integer variable n and count = 0.
+3. Read the integer number n from the user.
+4. If n is 0, then the count of digits is 1.
+5. Otherwise, Repeat the steps while n is not equal to 0. Divide n by 10. Increment count by 1.
+6. Display the value of count.
+7. Stop the program.
 
 ## Program:
-```
+```java
 /*
 Program to to count the number of digits in an integer
-Developed by: SANJEEV RAJ.S
-RegisterNumber: 212223220096
+Developed by: HARISH S
+Register Number: 212223230071
+*/
+
 import java.util.Scanner;
 
 public class CountDigits {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int num = sc.nextInt();
+        int num, count = 0;
 
-        int count = 0;
-        int n = Math.abs(num); 
+        System.out.print("Enter an integer: ");
+        num = sc.nextInt();
 
-        if (n == 0) {
-            count = 1; 
+        if (num == 0) {
+            count = 1;
         } else {
-            while (n > 0) {
-                n /= 10; 
+            while (num != 0) {
+                num = num / 10;
                 count++;
             }
         }
 
         System.out.println("Number of digits: " + count);
+        sc.close();
     }
 }
-*/
-
 ```
 
 ## Output:
+<img width="543" height="180" alt="image" src="https://github.com/user-attachments/assets/2e4cd75f-cb9c-461e-a79c-e7dec98ff288" />
 
-<img width="733" height="328" alt="image" src="https://github.com/user-attachments/assets/e98aa441-ca80-47c7-9d17-30a8f18ae029" />
 
 
 ## Result:
